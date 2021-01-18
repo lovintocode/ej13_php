@@ -4,7 +4,8 @@
 		private $conexion;
 
 		function __construct(){
-			$json_data = file_get_contents("config.json");
+			$path = realpath("/opt/lampp/htdocs/ej13_b/php/config.json");
+			$json_data = file_get_contents($path);
 			$array = json_decode($json_data, true);
 			try{
 				$this->conexion = new PDO("mysql:host=".$array['ruta'].";dbname=".$array['dbname']."", "".$array['usr']."","".$array['pwd']."");
